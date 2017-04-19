@@ -9,17 +9,17 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fl_icon_chb">
+        android:id="@+id/frameLayout">
 
         <ImageView
-            android:id="@+id/iv_select_countries_visited"
+            android:id="@+id/iconVisited"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_beenhere_white_24dp"
             android:visibility="gone"/>
 
         <CheckBox
-            android:id="@+id/checkbox"
+            android:id="@+id/checkboxSelected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -30,10 +30,11 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/country"
+        android:text="foo"
+        android:id="@+id/itemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/fl_icon_chb" />
+        android:layout_toRightOf="@+id/frameLayout" />
 
 </RelativeLayout>
