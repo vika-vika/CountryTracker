@@ -1,29 +1,34 @@
 package net.vnnz.apps.kotlin.tracker.adapter
 
+import android.content.Context
+import android.databinding.DataBindingUtil
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import net.vnnz.apps.kotlin.tracker.R
-import kotlinx.android.synthetic.main.list_row_select_country.view.*
+import kotlinx.android.synthetic.main.row_select_item.view.*
 import net.vnnz.apps.kotlin.tracker.pojo.ListItem
 
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
-import android.graphics.drawable.Drawable
-
-import android.content.Context
 import android.graphics.Color
-import android.util.TypedValue
+import net.vnnz.apps.kotlin.tracker.databinding.RowSelectItemBinding
+import net.vnnz.apps.kotlin.tracker.utils.ResourceUtils
 
 
 class ItemSelectAdapter(var items: List<ListItem>) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
-        val view = convertView ?: LayoutInflater.from(viewGroup?.context).inflate(R.layout.list_row_select_country, viewGroup, false)
+
+        val inflater:LayoutInflater =  viewGroup?.context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val binding : RowSelectItemBinding  = DataBindingUtil.inflate(inflater, R.layout.row_select_item, viewGroup, false);
+        binding.item = items.get(position);
+        return binding.root;
+
+
+        /*val view = convertView ?: LayoutInflater.from(viewGroup?.context).inflate(R.layout.row_select_item, viewGroup, false)
         var holder = ViewHolder(view)
         holder.bindData(items.get(position))
-        return view
+        return view*/
     }
 
     override fun getItem(position: Int)= items?.get(position)
@@ -41,11 +46,11 @@ class ItemSelectAdapter(var items: List<ListItem>) : BaseAdapter() {
                 view.checkboxSelected.visibility = View.GONE;
                 view.iconVisited.visibility      = View.VISIBLE
 
-                val color = getColor(R.attr.colorAccent, view.context)
+                val color = ResourceUtils.getColor(R.attr.colorAccent, view.context)
                 val colorWithAplha = Color.argb(64, Color.red(color), Color.green(color), Color.blue(color))
 
                 view.layout.setBackgroundColor(colorWithAplha)
-                view.iconVisited.setImageDrawable(getColoredIcon(view.context))
+                view.iconVisited.setImageDrawable(ResourceUtils.getColoredIcon(view.context))
 
             } else {
                 view.checkboxSelected.visibility = View.VISIBLE;
@@ -59,20 +64,6 @@ class ItemSelectAdapter(var items: List<ListItem>) : BaseAdapter() {
                 })
             }
 
-        }
-
-        private fun getColor(id: Int, context: Context): Int {
-            val typedValue = TypedValue()
-            val theme = context.getTheme()
-            theme.resolveAttribute(id, typedValue, true)
-            return typedValue.data
-        }
-
-        @Suppress("DEPRECATION")
-        private fun getColoredIcon(context: Context): Drawable {
-            val mDrawable = context.getResources().getDrawable(R.drawable.ic_done)
-            mDrawable.colorFilter = PorterDuffColorFilter(getColor(R.attr.colorAccent, context), PorterDuff.Mode.MULTIPLY)
-            return mDrawable
         }
 
     }
