@@ -17,7 +17,6 @@ import android.graphics.Color
 import android.util.TypedValue
 
 
-
 class ItemSelectAdapter(var items: List<ListItem>) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Data {
 
-    ArrayList<Item> items = new ArrayList<>();
+    public ArrayList<Item> items = new ArrayList<>();
 
     private static Data ourInstance = new Data();
 
