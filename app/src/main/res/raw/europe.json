@@ -1,0 +1,506 @@
+{
+  "Countries": {
+    "Country": [
+      {
+        "-name": "Abkhazia",
+        "-key": "Abkhazia",
+        "-capital": "Sukhumi",
+        "-lat": "43.00153",
+        "-lon": "41.02342",
+        "-isLimitedRecognition": "true",
+        "-isGeographicOnly": "true"
+      },
+      {
+        "-name": "Albania",
+        "-key": "Albania",
+        "-capital": "Tirana",
+        "-lat": "41.32755",
+        "-lon": "19.8186982",
+        "-location": "south"
+      },
+      {
+        "-name": "Andorra",
+        "-key": "Andorra",
+        "-capital": "Andorra la Vella",
+        "-lat": "42.50632",
+        "-lon": "1.5218355",
+        "-location": "south"
+      },
+      {
+        "-name": "Armenia",
+        "-key": "Armenia",
+        "-capital": "Yerevan",
+        "-lat": "40.17919",
+        "-lon": "44.49910",
+        "-isGeographicOnly": "true"
+      },
+      {
+        "-name": "Austria",
+        "-key": "Austria",
+        "-capital": "Vienna",
+        "-lat": "48.20817",
+        "-lon": "16.3738189",
+        "-location": "west"
+      },
+      {
+        "-name": "Azerbaijan",
+        "-key": "Azerbaijan",
+        "-capital": "Baku",
+        "-lat": "40.40926",
+        "-lon": "49.86709",
+        "-isGeographicOnly": "true"
+      },
+      {
+        "-name": "Belarus",
+        "-key": "Belarus",
+        "-capital": "Minsk",
+        "-lat": "53.90454",
+        "-lon": "27.5615244",
+        "-location": "east"
+      },
+      {
+        "-name": "Belgium",
+        "-key": "Belgium",
+        "-capital": "Brussels",
+        "-lat": "50.85034",
+        "-lon": "4.3517103",
+        "-location": "west"
+      },
+      {
+        "-name": "Bosnia and Herzegovina",
+        "-key": "BosniaHerzegovina",
+        "-capital": "Sarajevo",
+        "-lat": "43.85626",
+        "-lon": "18.4130763",
+        "-location": "south"
+      },
+      {
+        "-name": "Bulgaria",
+        "-key": "Bulgaria",
+        "-capital": "Sofia",
+        "-lat": "42.69771",
+        "-lon": "23.3218675",
+        "-location": "east"
+      },
+      {
+        "-name": "Croatia",
+        "-key": "Croatia",
+        "-capital": "Zagreb",
+        "-lat": "45.81501",
+        "-lon": "15.9819190",
+        "-location": "south"
+      },
+      {
+        "-name": "Cyprus",
+        "-key": "Cyprus",
+        "-capital": "Nicosia",
+        "-lat": "35.04002",
+        "-lon": "33.12390",
+        "-isGeographicOnly": "true"
+      },
+      {
+        "-name": "Czech Republic",
+        "-key": "CzechRepublic",
+        "-capital": "Prague",
+        "-lat": "50.07554",
+        "-lon": "14.4378005",
+        "-location": "east"
+      },
+      {
+        "-name": "Denmark",
+        "-key": "Denmark",
+        "-capital": "Copenhagen",
+        "-lat": "55.67610",
+        "-lon": "12.5683371",
+        "-location": "north"
+      },
+      {
+        "-name": "Estonia",
+        "-key": "Estonia",
+        "-capital": "Tallinn",
+        "-lat": "59.43696",
+        "-lon": "24.7535746",
+        "-location": "north"
+      },
+      {
+        "-name": "Faroe Islands",
+        "-key": "FaroeIslands",
+        "-capital": "Tórshavn",
+        "-lat": "62.00786",
+        "-lon": "-6.7909816",
+        "-isDependent": "true"
+      },
+      {
+        "-name": "Finland",
+        "-key": "Finland",
+        "-capital": "Helsinki",
+        "-lat": "60.17332",
+        "-lon": "24.9410248",
+        "-location": "north"
+      },
+      {
+        "-name": "France",
+        "-key": "France",
+        "-capital": "Paris",
+        "-lat": "48.85661",
+        "-lon": "2.3522219",
+        "-location": "west"
+      },
+      {
+        "-name": "Georgia",
+        "-key": "Georgia",
+        "-capital": "Tbilisi",
+        "-lat": "41.71514",
+        "-lon": "44.82710",
+        "-isGeographicOnly": "true"
+      },
+      {
+        "-name": "Germany",
+        "-key": "Germany",
+        "-capital": "Berlin",
+        "-lat": "52.52001",
+        "-lon": "13.4049540",
+        "-location": "west"
+      },
+      {
+        "-name": "Gibraltar",
+        "-key": "Gibraltar",
+        "-capital": "Gibraltar",
+        "-lat": "36.14077",
+        "-lon": "-5.3535994",
+        "-isDependent": "true"
+      },
+      {
+        "-name": "Greece",
+        "-key": "Greece",
+        "-capital": "Athens",
+        "-lat": "37.98392",
+        "-lon": "23.7293599",
+        "-location": "south"
+      },
+      {
+        "-name": "Guernsey",
+        "-key": "Guernsey",
+        "-capital": "Saint Peter Port",
+        "-lat": "49.45544",
+        "-lon": "-2.5368711",
+        "-isDependent": "true"
+      },
+      {
+        "-name": "Hungary",
+        "-key": "Hungary",
+        "-capital": "Budapest",
+        "-lat": "47.49791",
+        "-lon": "19.0402350",
+        "-location": "east"
+      },
+      {
+        "-name": "Iceland",
+        "-key": "Iceland",
+        "-capital": "Reykjavik",
+        "-lat": "64.12652",
+        "-lon": "-21.8174393",
+        "-location": "north"
+      },
+      {
+        "-name": "Ireland",
+        "-key": "Ireland",
+        "-capital": "Dublin",
+        "-lat": "53.34981",
+        "-lon": "-6.2603097",
+        "-location": "west"
+      },
+      {
+        "-name": "Isle of Man",
+        "-key": "IsleofMan",
+        "-capital": "Douglas",
+        "-lat": "54.15234",
+        "-lon": "-4.4861228",
+        "-isDependent": "true"
+      },
+      {
+        "-name": "Italy",
+        "-key": "Italy",
+        "-capital": "Rome",
+        "-lat": "41.90278",
+        "-lon": "12.4963655",
+        "-location": "south"
+      },
+      {
+        "-name": "Jersey",
+        "-key": "Jersey",
+        "-capital": "Saint Helier",
+        "-lat": "49.18682",
+        "-lon": "-2.1065682",
+        "-isDependent": "true"
+      },
+      {
+        "-name": "Kazakhstan",
+        "-key": "Kazakhstan",
+        "-capital": "Astana",
+        "-lat": "51.16052",
+        "-lon": "71.47036",
+        "-isGeographicOnly": "true"
+      },
+      {
+        "-name": "Kosovo",
+        "-key": "Kosovo",
+        "-capital": "Pristina",
+        "-lat": "42.66291",
+        "-lon": "21.1655028",
+        "-isLimitedRecognition": "true"
+      },
+      {
+        "-name": "Latvia",
+        "-key": "Latvia",
+        "-capital": "Riga",
+        "-lat": "56.94965",
+        "-lon": "24.1051864",
+        "-location": "north"
+      },
+      {
+        "-name": "Liechtenstein",
+        "-key": "Liechtenstein",
+        "-capital": "Vaduz",
+        "-lat": "47.14103",
+        "-lon": "9.5209277",
+        "-location": "west"
+      },
+      {
+        "-name": "Lithuania",
+        "-key": "Lithuania",
+        "-capital": "Vilnius",
+        "-lat": "54.68716",
+        "-lon": "25.2796514",
+        "-location": "north"
+      },
+      {
+        "-name": "Luxembourg",
+        "-key": "Luxembourg",
+        "-capital": "Luxembourg",
+        "-lat": "49.61162",
+        "-lon": "6.1319346",
+        "-location": "west"
+      },
+      {
+        "-name": "Macedonia",
+        "-key": "Macedonia",
+        "-capital": "Skopje",
+        "-lat": "41.99735",
+        "-lon": "21.4279956",
+        "-location": "south"
+      },
+      {
+        "-name": "Malta",
+        "-key": "Malta",
+        "-capital": "Valletta",
+        "-lat": "35.89891",
+        "-lon": "14.5145528",
+        "-location": "south"
+      },
+      {
+        "-name": "Moldova",
+        "-key": "Moldova",
+        "-capital": "Chişinău",
+        "-lat": "47.01045",
+        "-lon": "28.8638103",
+        "-location": "east"
+      },
+      {
+        "-name": "Monaco",
+        "-key": "Monaco",
+        "-capital": "Monaco",
+        "-lat": "43.73741",
+        "-lon": "7.4208160",
+        "-location": "west"
+      },
+      {
+        "-name": "Montenegro",
+        "-key": "Montenegro",
+        "-capital": "Podgorica",
+        "-lat": "42.43042",
+        "-lon": "19.2593642",
+        "-location": "south"
+      },
+      {
+        "-name": "Nagorno-Karabakh",
+        "-key": "NagornoKarabakh",
+        "-capital": "Stepanakert",
+        "-lat": "39.82653",
+        "-lon": "46.76557",
+        "-isLimitedRecognition": "true",
+        "-isGeographicOnly": "true"
+      },
+      {
+        "-name": "Netherlands",
+        "-key": "Netherlands",
+        "-capital": "Amsterdam",
+        "-lat": "52.37022",
+        "-lon": "4.8951679",
+        "-location": "west"
+      },
+      {
+        "-name": "Northern Cyprus",
+        "-key": "NorthernCyprus",
+        "-capital": "Nicosia",
+        "-lat": "35.18557",
+        "-lon": "33.38228",
+        "-isLimitedRecognition": "true",
+        "-isGeographicOnly": "true"
+      },
+      {
+        "-name": "Norway",
+        "-key": "Norway",
+        "-capital": "Oslo",
+        "-lat": "59.91387",
+        "-lon": "10.7522454",
+        "-location": "north"
+      },
+      {
+        "-name": "Poland",
+        "-key": "Poland",
+        "-capital": "Warsaw",
+        "-lat": "52.22968",
+        "-lon": "21.0122287",
+        "-location": "east"
+      },
+      {
+        "-name": "Portugal",
+        "-key": "Portugal",
+        "-capital": "Lisbon",
+        "-lat": "38.72225",
+        "-lon": "-9.1393366",
+        "-location": "south"
+      },
+      {
+        "-name": "Romania",
+        "-key": "Romania",
+        "-capital": "Bucharest",
+        "-lat": "44.42677",
+        "-lon": "26.1025384",
+        "-location": "east"
+      },
+      {
+        "-name": "Russia",
+        "-key": "Russia",
+        "-capital": "Moscow",
+        "-lat": "55.75583",
+        "-lon": "37.6173000",
+        "-location": "east"
+      },
+      {
+        "-name": "San Marino",
+        "-key": "SanMarino",
+        "-capital": "San Marino",
+        "-lat": "43.93559",
+        "-lon": "12.4472806",
+        "-location": "south"
+      },
+      {
+        "-name": "Serbia",
+        "-key": "Serbia",
+        "-capital": "Belgrade",
+        "-lat": "44.78657",
+        "-lon": "20.4489216",
+        "-location": "south"
+      },
+      {
+        "-name": "Slovakia",
+        "-key": "Slovakia",
+        "-capital": "Bratislava",
+        "-lat": "48.14589",
+        "-lon": "17.1071373",
+        "-location": "east"
+      },
+      {
+        "-name": "Slovenia",
+        "-key": "Slovenia",
+        "-capital": "Ljubljana",
+        "-lat": "46.05695",
+        "-lon": "14.5057515",
+        "-location": "south"
+      },
+      {
+        "-name": "South Ossetia",
+        "-key": "South Ossetia",
+        "-capital": "Tskhinvali",
+        "-lat": "42.22146",
+        "-lon": "43.96441",
+        "-isLimitedRecognition": "true",
+        "-isGeographicOnly": "true"
+      },
+      {
+        "-name": "Spain",
+        "-key": "Spain",
+        "-capital": "Madrid",
+        "-lat": "40.41678",
+        "-lon": "-3.7037902",
+        "-location": "south"
+      },
+      {
+        "-name": "Svalbard",
+        "-key": "Svalbard",
+        "-capital": "Longyearbyen",
+        "-lat": "78.22317",
+        "-lon": "15.6267230",
+        "-isDependent": "true"
+      },
+      {
+        "-name": "Sweden",
+        "-key": "Sweden",
+        "-capital": "Stockholm",
+        "-lat": "59.32932",
+        "-lon": "18.0685808",
+        "-location": "north"
+      },
+      {
+        "-name": "Switzerland",
+        "-key": "Switzerland",
+        "-capital": "Bern",
+        "-lat": "46.94797",
+        "-lon": "7.4474468",
+        "-location": "west"
+      },
+      {
+        "-name": "Transnistria",
+        "-key": "Transnistria",
+        "-capital": "Tiraspol",
+        "-lat": "46.84819",
+        "-lon": "29.5968050",
+        "-isLimitedRecognition": "true"
+      },
+      {
+        "-name": "Turkey",
+        "-key": "Turkey",
+        "-capital": "Ankara",
+        "-lat": "39.93336",
+        "-lon": "32.85974",
+        "-isGeographicOnly": "true"
+      },
+      {
+        "-name": "Ukraine",
+        "-key": "Ukraine",
+        "-capital": "Kyiv",
+        "-lat": "50.45010",
+        "-lon": "30.5234000",
+        "-location": "east"
+      },
+      {
+        "-name": "United Kingdom",
+        "-key": "United Kingdom",
+        "-capital": "London",
+        "-lat": "51.50735",
+        "-lon": "-0.1277583",
+        "-location": "west"
+      },
+      {
+        "-name": "Vatican City/Holy See",
+        "-key": "Vatican",
+        "-capital": "Vatican City",
+        "-lat": "41.90218",
+        "-lon": "12.4536007",
+        "-location": "south"
+      }
+    ]
+  }
+}
