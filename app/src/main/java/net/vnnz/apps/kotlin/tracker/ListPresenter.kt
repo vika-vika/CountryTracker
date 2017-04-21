@@ -2,6 +2,7 @@ package net.vnnz.apps.kotlin.tracker
 
 
 import android.content.Context
+import android.databinding.BaseObservable
 import android.databinding.BindingAdapter
 import android.databinding.ObservableArrayList
 import android.graphics.Color
@@ -43,17 +44,26 @@ fun setBackgroundColor(view: RelativeLayout, isVisited: Boolean) {
    }
 }
 
-class ListPresenter(var context: Context, loaderManager: LoaderManager) : LoaderManager.LoaderCallbacks<List<ListItem>> {
+class ListPresenter(var context: Context, loaderManager: LoaderManager) : LoaderManager.LoaderCallbacks<List<ListItem>>  {
 
     var selectedItems : MutableList<ListItem> = mutableListOf<ListItem>()
-    var items : ObservableArrayList<ListItem> =  ObservableArrayList<ListItem>()
+    var items         : ObservableArrayList<ListItem> =  ObservableArrayList<ListItem>()
 
-    val itemsCount = ObservableField<String>()
+    val itemsCount    = ObservableField<String>()
+    val adapter: ItemSelectAdapter
 
     init {
         itemsCount.set("0");
         loaderManager.initLoader(0, null, this)
+        adapter = ItemSelectAdapter(this)
+        // getList.setAdapter(adapter);
     }
+
+    /*fun bindViewModel(view: ListView, viewmodel : ListPresenter) {
+        val adapter = ItemSelectAdapter(viewmodel)
+        view.adapter = adapter
+        Log.e("TAG", "!!!!!!!!!!!!!!!!3");
+    }*/
 
     fun onCheckboxClick (item : ListItem) {
 
@@ -74,7 +84,6 @@ class ListPresenter(var context: Context, loaderManager: LoaderManager) : Loader
         Log.e("TAG", "data".plus(data?.size));
         items.add(ListItem(Item("1111111", "11111111")))
         items.add(ListItem(Item("2211111", "22111111")))
-
         //notifyPro
     }
 

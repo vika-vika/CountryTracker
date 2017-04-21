@@ -8,6 +8,7 @@
         <import type="net.vnnz.apps.kotlin.tracker.pojo.ListItem"/>
         <import type="net.vnnz.apps.kotlin.tracker.ListPresenter"/>
         <variable name="viewmodel" type="ListPresenter" />
+
     </data>
 
     <LinearLayout
@@ -28,7 +29,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="74dp"
             android:layout_marginStart="74dp"
-            android:text='@{viewmodel.items.size + "foo"}' />
+            android:text="@{viewmodel.itemsCount}" />
 
         <ListView
             android:id="@+id/itemsList"
@@ -36,7 +37,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            bind:listViewModel="@{viewmodel}"/>
+            bind:listViewModel="@{viewmodel}" />
 
     </LinearLayout>
 </layout>
