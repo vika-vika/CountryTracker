@@ -1,7 +1,9 @@
 package net.vnnz.apps.kotlin.tracker
 
+
 import android.content.Context
 import android.databinding.BindingAdapter
+import android.databinding.ObservableArrayList
 import android.graphics.Color
 import android.util.Log
 import android.widget.ImageView
@@ -11,15 +13,18 @@ import net.vnnz.apps.kotlin.tracker.adapter.ItemSelectAdapter
 import net.vnnz.apps.kotlin.tracker.pojo.ListItem
 import net.vnnz.apps.kotlin.tracker.utils.ResourceUtils
 import android.databinding.ObservableField
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.io.StringWriter
+import android.os.Bundle
+import android.support.v4.app.LoaderManager
+import android.support.v4.content.Loader
+import net.vnnz.apps.kotlin.tracker.pojo.Item
+import java.util.ArrayList
 
 
 @BindingAdapter("bind:listViewModel")
 fun bindViewModel(view: ListView, viewmodel : ListPresenter) {
     val adapter = ItemSelectAdapter(viewmodel)
     view.adapter = adapter
+    Log.e("TAG", "!!!!!!!!!!!!!!!!2");
 }
 
 
@@ -38,15 +43,16 @@ fun setBackgroundColor(view: RelativeLayout, isVisited: Boolean) {
    }
 }
 
-class ListPresenter(var context: Context) {
+class ListPresenter(var context: Context, loaderManager: LoaderManager) : LoaderManager.LoaderCallbacks<List<ListItem>> {
 
     var selectedItems : MutableList<ListItem> = mutableListOf<ListItem>()
-    val items : List<ListItem> = Data.getInstance().items.map { ListItem(it) }
+    var items : ObservableArrayList<ListItem> =  ObservableArrayList<ListItem>()
 
     val itemsCount = ObservableField<String>()
 
     init {
         itemsCount.set("0");
+        loaderManager.initLoader(0, null, this)
     }
 
     fun onCheckboxClick (item : ListItem) {
@@ -57,7 +63,21 @@ class ListPresenter(var context: Context) {
             selectedItems.add(item)
         }
         itemsCount.set(selectedItems.size.toString())
-      //  Log.e("dfs", ResourceUtils.readJSONfromRaw(R.raw.europe, context))
+
     }
 
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<List<ListItem>> {
+         return DataLoader(context, R.raw.europe)
+    }
+
+    override fun onLoadFinished(loader: Loader<List<ListItem>>?, data: List<ListItem>?) {
+        Log.e("TAG", "data".plus(data?.size));
+        items.add(ListItem(Item("1111111", "11111111")))
+        items.add(ListItem(Item("2211111", "22111111")))
+        //notifyPro
+    }
+
+    override fun onLoaderReset(loader: Loader<List<ListItem>>?) {
+
+    }
 }
