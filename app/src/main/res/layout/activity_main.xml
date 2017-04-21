@@ -6,7 +6,8 @@
     <data>
         <import type="java.util.List"/>
         <import type="net.vnnz.apps.kotlin.tracker.pojo.ListItem"/>
-        <variable name="list" type="List&lt;ListItem&gt;" /> <!-- cannot resolve symbol and is OK. IDE bug-->
+        <import type="net.vnnz.apps.kotlin.tracker.ListPresenter"/>
+        <variable name="viewmodel" type="ListPresenter" />
     </data>
 
     <RelativeLayout
@@ -24,6 +25,6 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            bind:itemsList="@{list}"/>
+            bind:listViewModel="@{viewmodel}"/>
     </RelativeLayout>
 </layout>

@@ -12,6 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding:ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.list = Data.getInstance().items.map { ListItem(it) }
+        binding.viewmodel = ListPresenter()
     }
 }

@@ -4,9 +4,12 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto">
     <data>
         <import type="android.view.View"/>
+        <import type="net.vnnz.apps.kotlin.tracker.ListPresenter"/>
         <variable
             name="item"
             type="net.vnnz.apps.kotlin.tracker.pojo.ListItem" />
+
+        <variable name="viewmodel" type="ListPresenter" />
     </data>
 
     <RelativeLayout
@@ -37,7 +40,8 @@
                 android:layout_marginRight="15dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:visibility="@{item.isVisited ? View.GONE : View.VISIBLE}"/>
+                android:visibility="@{item.isVisited ? View.GONE : View.VISIBLE}"
+                android:onClick="@{() -> viewmodel.onCheckboxClick(item)}"/>
 
         </FrameLayout>
 
