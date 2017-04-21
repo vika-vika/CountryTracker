@@ -1,7 +1,7 @@
 package net.vnnz.apps.kotlin.tracker
 
+import android.content.Context
 import android.databinding.BindingAdapter
-import android.databinding.ObservableArrayList
 import android.graphics.Color
 import android.util.Log
 import android.widget.ImageView
@@ -10,6 +10,10 @@ import android.widget.RelativeLayout
 import net.vnnz.apps.kotlin.tracker.adapter.ItemSelectAdapter
 import net.vnnz.apps.kotlin.tracker.pojo.ListItem
 import net.vnnz.apps.kotlin.tracker.utils.ResourceUtils
+import android.databinding.ObservableField
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.io.StringWriter
 
 
 @BindingAdapter("bind:listViewModel")
@@ -34,13 +38,16 @@ fun setBackgroundColor(view: RelativeLayout, isVisited: Boolean) {
    }
 }
 
-
-
-
-class ListPresenter {
+class ListPresenter(var context: Context) {
 
     var selectedItems : MutableList<ListItem> = mutableListOf<ListItem>()
     val items : List<ListItem> = Data.getInstance().items.map { ListItem(it) }
+
+    val itemsCount = ObservableField<String>()
+
+    init {
+        itemsCount.set("0");
+    }
 
     fun onCheckboxClick (item : ListItem) {
 
@@ -49,8 +56,8 @@ class ListPresenter {
         } else {
             selectedItems.add(item)
         }
-        Log.e("TAG",selectedItems.size.toString())
+        itemsCount.set(selectedItems.size.toString())
+      //  Log.e("dfs", ResourceUtils.readJSONfromRaw(R.raw.europe, context))
     }
-
 
 }
