@@ -28,7 +28,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="74dp"
             android:layout_marginStart="74dp"
-            android:text="@{viewmodel.itemsCount}" />
+            android:text='@{viewmodel.items.size + "foo"}' />
 
         <ListView
             android:id="@+id/itemsList"

@@ -74,6 +74,7 @@ class ListPresenter(var context: Context, loaderManager: LoaderManager) : Loader
         Log.e("TAG", "data".plus(data?.size));
         items.add(ListItem(Item("1111111", "11111111")))
         items.add(ListItem(Item("2211111", "22111111")))
+
         //notifyPro
     }
 
