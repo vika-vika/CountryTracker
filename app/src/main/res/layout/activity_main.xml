@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
-
-    <data>
-        <import type="java.util.List"/>
-        <import type="net.vnnz.apps.kotlin.tracker.pojo.ListItem"/>
-        <import type="net.vnnz.apps.kotlin.tracker.ListPresenter"/>
-        <variable name="viewmodel" type="ListPresenter" />
-
-    </data>
-
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,23 +11,12 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="74dp"
-            android:layout_marginStart="74dp"
-            android:text="@{viewmodel.itemsCount}" />
-
         <ListView
             android:id="@+id/itemsList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            bind:listViewModel="@{viewmodel}" />
+            android:layout_centerHorizontal="true" />
 
     </LinearLayout>
-</layout>
+
