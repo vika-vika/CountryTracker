@@ -30,12 +30,13 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<List<ListItem>> {
-        return DataLoader(view.getViewContext(), R.raw.europe)
+        return DataLoader(view.getViewContext()!!, R.raw.europe)
     }
 
     override fun onLoadFinished(loader: Loader<List<ListItem>>?, data: List<ListItem>?) {
-        items.add(ListItem(Item("1111111", "11111111")))
-        items.add(ListItem(Item("2211111", "22111111")))
+        for (item in data!!) {
+            items.add(item);
+        }
         view.onItemsLoaded()
     }
 

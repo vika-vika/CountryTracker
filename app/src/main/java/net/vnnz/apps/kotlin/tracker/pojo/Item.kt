@@ -1,3 +1,21 @@
 package net.vnnz.apps.kotlin.tracker.pojo
 
-data class Item(val key : String, val name : String, val color: String = "not set")
+import com.google.gson.annotations.SerializedName
+
+class Item {
+
+    @SerializedName("key")
+    var key: String? = null
+
+    @SerializedName("name")
+    var name: String? = null
+
+    var color: String? = null
+
+    override fun toString(): String {
+        return "Item_{" +
+                "key='" + key + '\'' +
+                ", name='" + name + '\'' +
+                '}'
+    }
+}

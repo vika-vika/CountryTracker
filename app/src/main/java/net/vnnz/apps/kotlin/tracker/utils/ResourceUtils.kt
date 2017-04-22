@@ -29,6 +29,7 @@ class ResourceUtils {
 
         fun readJSONfromRaw(res : Int, context: Context) : String{
             val inputStream = context.getResources().openRawResource(res)
+            //val gson = Gson()
             val writer = StringWriter()
             val buffer = CharArray(1024)
             try {
