@@ -10,7 +10,7 @@ import net.vnnz.apps.kotlin.tracker.utils.ResourceUtils
 import android.os.Bundle
 import android.support.v4.app.LoaderManager
 import android.support.v4.content.Loader
-import net.vnnz.apps.kotlin.tracker.pojo.Item
+import android.util.Log
 import net.vnnz.apps.kotlin.tracker.view.ListItemsView
 
 class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
@@ -30,7 +30,7 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<List<ListItem>> {
-        return DataLoader(view.getViewContext()!!, R.raw.europe)
+        return DataLoader(view.getViewContext()!!, R.raw.test_map)
     }
 
     override fun onLoadFinished(loader: Loader<List<ListItem>>?, data: List<ListItem>?) {

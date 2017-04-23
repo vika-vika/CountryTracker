@@ -14,11 +14,7 @@ import net.vnnz.apps.kotlin.tracker.databinding.RowSelectItemBinding
 
 
 class ItemSelectAdapter(var viewmodel : ListPresenter) : BaseAdapter() {
-    var items : List<ListItem>
-
-    init {
-        items = viewmodel.items
-    }
+    var items : List<ListItem> = viewmodel.items
 
     override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
 
@@ -29,9 +25,9 @@ class ItemSelectAdapter(var viewmodel : ListPresenter) : BaseAdapter() {
         return binding.root;
     }
 
-    override fun getItem(position: Int)= items?.get(position)
+    override fun getItem(position: Int)= items.get(position)
 
-    override fun getCount() = items?.size
+    override fun getCount() = items.size
 
     override fun getItemId(position: Int) = getItem(position).hashCode().toLong()
 

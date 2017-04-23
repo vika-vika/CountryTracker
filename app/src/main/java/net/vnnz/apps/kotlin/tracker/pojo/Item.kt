@@ -10,6 +10,7 @@ class Item {
     @SerializedName("name")
     var name: String? = null
 
+    @SerializedName("color")
     var color: String? = null
 
     override fun toString(): String {

@@ -9,6 +9,8 @@ import android.util.Log
 import net.vnnz.apps.kotlin.tracker.view.ListItemsView
 import kotlinx.android.synthetic.main.activity_main.*
 import net.vnnz.apps.kotlin.tracker.adapter.ItemSelectAdapter
+import net.vnnz.apps.kotlin.tracker.pojo.ListItem
+import net.vnnz.apps.kotlin.tracker.utils.ImageUtils
 
 class ListActivity : AppCompatActivity(), ListItemsView {
 
@@ -19,6 +21,7 @@ class ListActivity : AppCompatActivity(), ListItemsView {
         setContentView(R.layout.activity_main)
 
         presenter.bindView(this)
+        imageView.setImageBitmap(ImageUtils.fillImageMap(this, ""))
     }
 
     override fun getViewContext(): Context? = this
