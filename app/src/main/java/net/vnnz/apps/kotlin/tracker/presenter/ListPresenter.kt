@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.support.v4.app.LoaderManager
 import android.support.v4.content.Loader
 import android.util.Log
+import net.vnnz.apps.kotlin.tracker.utils.ImageUtils
 import net.vnnz.apps.kotlin.tracker.view.ListItemsView
 
 class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
@@ -47,6 +48,11 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
     fun bindView(_view: ListItemsView) {
         view = _view
         view.getLoader().initLoader(0, null, this)
+    }
+
+    fun saveSelectedImageMap() {
+        val bitmap = ImageUtils.fillImageMap(view.getViewContext()!!, selectedItems.toTypedArray());
+        ImageUtils.saveImage(bitmap, "europe");
     }
 }
 

@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Environment
 import net.vnnz.apps.kotlin.tracker.R
+import net.vnnz.apps.kotlin.tracker.pojo.ListItem
 import java.io.File
 import java.io.FileOutputStream
 
@@ -17,19 +18,23 @@ class ImageUtils {
 
         }
 
-        fun fillImageMap(context: Context, path: String) : Bitmap {
+        fun getVisitedColors(items: Array<ListItem>)  = items./*filter {it.isSelected}.*/map {Color.parseColor(it.color)}
+
+        fun fillImageMap(context: Context, items: Array<ListItem>) : Bitmap {
 
             val options = BitmapFactory.Options()
             options.inMutable = true
 
-            var myBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.europe_map, options)
+            var myBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.test_map, options)
 
-            val allpixels = IntArray(myBitmap.getHeight() * myBitmap.getWidth())
+            val allpixels = IntArray(myBitmap.height * myBitmap.width)
 
-            myBitmap.getPixels(allpixels, 0, myBitmap.getWidth(), 0, 0, myBitmap.getWidth(), myBitmap.getHeight())
+            myBitmap.getPixels(allpixels, 0, myBitmap.width, 0, 0, myBitmap.width, myBitmap.height)
+
+            val visitedColors : List<Int>  = getVisitedColors(items)
 
             for (i in 0..allpixels.size - 1) {
-                if (allpixels[i] == Color.parseColor("#f1b9d6")) {
+                if (allpixels[i] in visitedColors) {
                     allpixels[i] = Color.RED
                 }
             }

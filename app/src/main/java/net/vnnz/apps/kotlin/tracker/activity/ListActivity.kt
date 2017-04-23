@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.LoaderManager
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
+import android.view.View
 
 import net.vnnz.apps.kotlin.tracker.view.ListItemsView
 import kotlinx.android.synthetic.main.activity_list_items.*
@@ -21,6 +21,7 @@ class ListActivity : AppCompatActivity(), ListItemsView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_items)
 
+        setSupportActionBar(toolbar)
         presenter.bindView(this)
        // imageView.setImageBitmap(ImageUtils.fillImageMap(this, ""))
     }
@@ -35,6 +36,11 @@ class ListActivity : AppCompatActivity(), ListItemsView {
     }
 
     override fun updateHeader(size: Int) {
-        Log.e("TAG", size.toString());
+        toolbar.subtitle = "Selected $size countries"
+        toolbar.title = "fooo"
+    }
+
+    fun onDoneClick(view: View) {
+        presenter.saveSelectedImageMap();
     }
 }
