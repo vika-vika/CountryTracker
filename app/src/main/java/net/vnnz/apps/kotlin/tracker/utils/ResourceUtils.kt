@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.util.TypedValue
 import net.vnnz.apps.kotlin.tracker.R
 import java.io.BufferedReader
