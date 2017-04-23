@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val root: String = Environment.getExternalStorageDirectory().getAbsolutePath();
         val myDir: File = File(root + "/maps")
 
-        val filename:String = "map_europe.jpg"
+        val filename:String = "map_europe.png"
         var file: File = File (myDir, filename)
         Log.e("TAG","file exists " + file.exists())
         //TODO: add M permissons check

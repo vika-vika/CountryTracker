@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Environment
+import android.util.Log
 import net.vnnz.apps.kotlin.tracker.R
 import net.vnnz.apps.kotlin.tracker.pojo.ListItem
 import java.io.File
@@ -32,11 +33,22 @@ class ImageUtils {
             myBitmap.getPixels(allpixels, 0, myBitmap.width, 0, 0, myBitmap.width, myBitmap.height)
 
             val visitedColors : List<Int>  = getVisitedColors(items)
-
+            var foo = 0;
+            //Color.p
+            Log.e("TAG", visitedColors.toString())
+            Log.e("TAG", Color.parseColor("#23b04b").toString())
+            Log.e("TAG", (Color.parseColor("#23b04b") in visitedColors).toString())
             for (i in 0..allpixels.size - 1) {
+                if (allpixels[i] != foo) {
+                    Log.e("TAG", allpixels[i].toString())
+                }
                 if (allpixels[i] in visitedColors) {
+                    if (allpixels[i] != foo) {
+                        Log.e("TAG", "changing")
+                    }
                     allpixels[i] = Color.RED
                 }
+                foo = allpixels[i]
             }
 
             myBitmap.setPixels(allpixels, 0, myBitmap.getWidth(), 0, 0, myBitmap.getWidth(), myBitmap.getHeight())
@@ -49,7 +61,7 @@ class ImageUtils {
             val myDir: File = File(root + "/maps");
             myDir.mkdirs();
 
-            val filename:String = "map_$mapName.jpg";
+            val filename:String = "map_$mapName.png";
             var file:File = File (myDir, filename)
             if (file.exists()) file.delete()
 
@@ -59,6 +71,7 @@ class ImageUtils {
                 out.flush();
                 out.close();
             } catch (e : Exception) {
+                Log.e("TAG", "file saving exception")
                 e.printStackTrace();
             }
         }

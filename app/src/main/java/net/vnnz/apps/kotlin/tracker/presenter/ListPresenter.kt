@@ -13,6 +13,10 @@ import android.support.v4.content.Loader
 import android.util.Log
 import net.vnnz.apps.kotlin.tracker.utils.ImageUtils
 import net.vnnz.apps.kotlin.tracker.view.ListItemsView
+import net.vnnz.apps.kotlin.tracker.worker.DataLoader
+import android.content.Intent
+import net.vnnz.apps.kotlin.tracker.worker.WorkerService
+
 
 class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
 
@@ -51,8 +55,13 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
     }
 
     fun saveSelectedImageMap() {
-        val bitmap = ImageUtils.fillImageMap(view.getViewContext()!!, selectedItems.toTypedArray());
-        ImageUtils.saveImage(bitmap, "europe");
+       /* val bitmap = ImageUtils.fillImageMap(view.getViewContext()!!, selectedItems.toTypedArray());
+        ImageUtils.saveImage(bitmap, "europe");*/
+
+        val workerService = Intent(view.getViewContext()!!, WorkerService::class.java)
+        workerService.setAction(TrackerTasks.ACTION_COLOR_ANS_SAVE_MAP)
+       // workerService.putParcelableArrayListExtra("vdv", selectedItems)
+        view.getViewContext()?.startService(workerService)
     }
 }
 

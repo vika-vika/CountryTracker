@@ -1,4 +1,4 @@
-package net.vnnz.apps.kotlin.tracker
+package net.vnnz.apps.kotlin.tracker.worker
 
 import android.content.Context
 import android.support.v4.content.AsyncTaskLoader
