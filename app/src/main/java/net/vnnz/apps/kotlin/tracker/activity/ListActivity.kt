@@ -22,7 +22,7 @@ class ListActivity : AppCompatActivity(), ListItemsView {
         setContentView(R.layout.activity_list_items)
 
         presenter.bindView(this)
-        imageView.setImageBitmap(ImageUtils.fillImageMap(this, ""))
+       // imageView.setImageBitmap(ImageUtils.fillImageMap(this, ""))
     }
 
     override fun getViewContext(): Context? = this

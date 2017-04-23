@@ -2,13 +2,12 @@ package net.vnnz.apps.kotlin.tracker.utils
 
 import android.content.Context
 import android.graphics.Bitmap
-import net.vnnz.apps.kotlin.tracker.pojo.ListItem
-import android.opengl.ETC1.getHeight
-import android.opengl.ETC1.getWidth
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.os.Environment
 import net.vnnz.apps.kotlin.tracker.R
-
+import java.io.File
+import java.io.FileOutputStream
 
 class ImageUtils {
 
@@ -37,6 +36,26 @@ class ImageUtils {
 
             myBitmap.setPixels(allpixels, 0, myBitmap.getWidth(), 0, 0, myBitmap.getWidth(), myBitmap.getHeight())
             return myBitmap
+        }
+
+
+        fun saveImage(bitmap : Bitmap, mapName: String) {
+            val root: String = Environment.getExternalStorageDirectory().getAbsolutePath();
+            val myDir: File = File(root + "/maps");
+            myDir.mkdirs();
+
+            val filename:String = "map_$mapName.jpg";
+            var file:File = File (myDir, filename)
+            if (file.exists()) file.delete()
+
+            try {
+                var out : FileOutputStream = FileOutputStream(file)
+                bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+                out.flush();
+                out.close();
+            } catch (e : Exception) {
+                e.printStackTrace();
+            }
         }
     }
 
