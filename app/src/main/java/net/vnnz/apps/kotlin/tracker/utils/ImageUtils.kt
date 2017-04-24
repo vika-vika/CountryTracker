@@ -38,17 +38,16 @@ class ImageUtils {
 
             val visitedColors : List<Int>  = getVisitedColors(items!!)
             var foo = 0;
-            //Color.p
+
             Log.e("TAG", visitedColors.toString())
-            Log.e("TAG", Color.parseColor("#23b04b").toString())
             Log.e("TAG", (Color.parseColor("#23b04b") in visitedColors).toString())
             for (i in 0..allpixels.size - 1) {
                 if (allpixels[i] != foo) {
-                    Log.e("TAG", allpixels[i].toString())
+                   // Log.e("TAG", allpixels[i].toString())
                 }
                 if (allpixels[i] in visitedColors) {
                     if (allpixels[i] != foo) {
-                        Log.e("TAG", "changing")
+                    //    Log.e("TAG", "changing")
                     }
                     allpixels[i] = Color.RED
                 }

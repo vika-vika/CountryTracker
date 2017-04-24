@@ -6,4 +6,5 @@ interface MainView {
     fun getFloatingButton() : FloatingActionButton
 
     fun startListActivity()
+    fun updateMaps()
 }
