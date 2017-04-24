@@ -8,4 +8,5 @@ interface ListItemsView {
     fun getLoader (): LoaderManager
     fun getViewContext() : Context?
     fun updateHeader(size: Int)
+    fun finishActivity()
 }

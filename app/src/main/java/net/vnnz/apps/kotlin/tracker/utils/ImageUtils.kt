@@ -21,18 +21,22 @@ class ImageUtils {
 
         fun getVisitedColors(items: Array<ListItem>)  = items./*filter {it.isSelected}.*/map {Color.parseColor(it.color)}
 
-        fun fillImageMap(context: Context, items: Array<ListItem>) : Bitmap {
+        fun fillImageMap(context: Context, items: Array<ListItem>?) : Bitmap {
 
             val options = BitmapFactory.Options()
             options.inMutable = true
 
             var myBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.test_map, options)
 
+            if (items == null) {
+               return myBitmap;
+            }
+
             val allpixels = IntArray(myBitmap.height * myBitmap.width)
 
             myBitmap.getPixels(allpixels, 0, myBitmap.width, 0, 0, myBitmap.width, myBitmap.height)
 
-            val visitedColors : List<Int>  = getVisitedColors(items)
+            val visitedColors : List<Int>  = getVisitedColors(items!!)
             var foo = 0;
             //Color.p
             Log.e("TAG", visitedColors.toString())
@@ -57,19 +61,19 @@ class ImageUtils {
 
 
         fun saveImage(bitmap : Bitmap, mapName: String) {
-            val root: String = Environment.getExternalStorageDirectory().getAbsolutePath();
-            val myDir: File = File(root + "/maps");
-            myDir.mkdirs();
+            val root: String = Environment.getExternalStorageDirectory().absolutePath
+            val myDir: File = File(root + "/maps")
+            myDir.mkdirs()
 
-            val filename:String = "map_$mapName.png";
+            val filename:String = "map_$mapName.png"
             var file:File = File (myDir, filename)
             if (file.exists()) file.delete()
 
             try {
                 var out : FileOutputStream = FileOutputStream(file)
-                bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
-                out.flush();
-                out.close();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 90, out)
+                out.flush()
+                out.close()
             } catch (e : Exception) {
                 Log.e("TAG", "file saving exception")
                 e.printStackTrace();

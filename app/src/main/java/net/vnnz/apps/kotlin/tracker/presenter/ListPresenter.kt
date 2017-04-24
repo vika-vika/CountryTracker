@@ -10,19 +10,20 @@ import net.vnnz.apps.kotlin.tracker.utils.ResourceUtils
 import android.os.Bundle
 import android.support.v4.app.LoaderManager
 import android.support.v4.content.Loader
-import android.util.Log
-import net.vnnz.apps.kotlin.tracker.utils.ImageUtils
+
 import net.vnnz.apps.kotlin.tracker.view.ListItemsView
 import net.vnnz.apps.kotlin.tracker.worker.DataLoader
 import android.content.Intent
+
 import net.vnnz.apps.kotlin.tracker.worker.WorkerService
+import java.util.ArrayList
 
 
 class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
 
     lateinit var view: ListItemsView;
 
-    var selectedItems: MutableList<ListItem> = mutableListOf<ListItem>()
+    var selectedItems: ArrayList<ListItem> = ArrayList<ListItem>()
     var items: ObservableArrayList<ListItem> = ObservableArrayList<ListItem>()
 
     fun onCheckboxClick(item: ListItem) {
@@ -31,7 +32,7 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
             selectedItems.remove(item)
         else
             selectedItems.add(item)
-        view.updateHeader(selectedItems.size);
+        view.updateHeader(selectedItems.size)
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<List<ListItem>> {
@@ -40,7 +41,7 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
 
     override fun onLoadFinished(loader: Loader<List<ListItem>>?, data: List<ListItem>?) {
         for (item in data!!) {
-            items.add(item);
+            items.add(item)
         }
         view.onItemsLoaded()
     }
@@ -55,13 +56,12 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
     }
 
     fun saveSelectedImageMap() {
-       /* val bitmap = ImageUtils.fillImageMap(view.getViewContext()!!, selectedItems.toTypedArray());
-        ImageUtils.saveImage(bitmap, "europe");*/
-
         val workerService = Intent(view.getViewContext()!!, WorkerService::class.java)
-        workerService.setAction(TrackerTasks.ACTION_COLOR_ANS_SAVE_MAP)
-       // workerService.putParcelableArrayListExtra("vdv", selectedItems)
+        workerService.action = TrackerTasks.ACTION_COLOR_ANS_SAVE_MAP
+        workerService.putParcelableArrayListExtra(TrackerTasks.EXTRA_COLOR_ANS_SAVE_MAP, selectedItems)
+
         view.getViewContext()?.startService(workerService)
+        view.finishActivity();
     }
 }
 

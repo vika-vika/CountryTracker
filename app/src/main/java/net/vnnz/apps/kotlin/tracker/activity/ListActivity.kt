@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.activity_list_items.*
 import net.vnnz.apps.kotlin.tracker.ListPresenter
 import net.vnnz.apps.kotlin.tracker.R
 import net.vnnz.apps.kotlin.tracker.adapter.ItemSelectAdapter
-import net.vnnz.apps.kotlin.tracker.utils.ImageUtils
 
 class ListActivity : AppCompatActivity(), ListItemsView {
 
@@ -23,7 +22,6 @@ class ListActivity : AppCompatActivity(), ListItemsView {
 
         setSupportActionBar(toolbar)
         presenter.bindView(this)
-       // imageView.setImageBitmap(ImageUtils.fillImageMap(this, ""))
     }
 
     override fun getViewContext(): Context? = this
@@ -31,16 +29,19 @@ class ListActivity : AppCompatActivity(), ListItemsView {
     override fun getLoader(): LoaderManager = supportLoaderManager
 
     override fun onItemsLoaded() {
-       // Log.e("TAG", presenter.items.toString());
         itemsList.adapter = ItemSelectAdapter(presenter)
     }
 
     override fun updateHeader(size: Int) {
         toolbar.subtitle = "Selected $size countries"
-        toolbar.title = "fooo"
     }
 
     fun onDoneClick(view: View) {
         presenter.saveSelectedImageMap();
     }
+
+    override fun finishActivity() {
+        finish();
+    }
+
 }

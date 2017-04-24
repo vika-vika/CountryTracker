@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var file: File = File (myDir, filename)
         Log.e("TAG","file exists " + file.exists())
         //TODO: add M permissons check
-        //TODO: add worker service
         //TODO File observer
         if (file.exists()) {
             Picasso.with(this).load(file).into(iv_map);
