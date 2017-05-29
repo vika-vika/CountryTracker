@@ -21,9 +21,9 @@ class TrackerTasks {
         private fun prepareAndSaveMapToFile(context: Context, items: ArrayList<ListItem>?) {
             val bitmap = ImageUtils.fillImageMap(context, items?.toTypedArray())
             ImageUtils.saveImage(bitmap, "europe")
-            val intent = Intent();
-            intent.setAction("FILE_CHANGED");
-            context.sendBroadcast(intent)
+           // val intent = Intent();
+          //  intent.setAction("FILE_CHANGED");
+          //  context.sendBroadcast(intent)
         }
     }
 }

@@ -10,6 +10,10 @@ import net.vnnz.apps.kotlin.tracker.R
 import net.vnnz.apps.kotlin.tracker.pojo.ListItem
 import java.io.File
 import java.io.FileOutputStream
+import android.content.res.AssetManager
+import java.io.IOException
+import java.io.InputStream
+
 
 class ImageUtils {
 
@@ -26,7 +30,8 @@ class ImageUtils {
             val options = BitmapFactory.Options()
             options.inMutable = true
 
-            var myBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.test_map, options)
+            val bitmap = getBitmapFromAsset(context, "test_map.png");
+            var myBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
 
             if (items == null) {
                return myBitmap;
@@ -37,25 +42,32 @@ class ImageUtils {
             myBitmap.getPixels(allpixels, 0, myBitmap.width, 0, 0, myBitmap.width, myBitmap.height)
 
             val visitedColors : List<Int>  = getVisitedColors(items!!)
-            var foo = 0;
 
-            Log.e("TAG", visitedColors.toString())
-            Log.e("TAG", (Color.parseColor("#23b04b") in visitedColors).toString())
             for (i in 0..allpixels.size - 1) {
-                if (allpixels[i] != foo) {
-                   // Log.e("TAG", allpixels[i].toString())
-                }
+
                 if (allpixels[i] in visitedColors) {
-                    if (allpixels[i] != foo) {
-                    //    Log.e("TAG", "changing")
-                    }
+                    //  Log.e("TAG", "changing")
                     allpixels[i] = Color.RED
                 }
-                foo = allpixels[i]
             }
 
             myBitmap.setPixels(allpixels, 0, myBitmap.getWidth(), 0, 0, myBitmap.getWidth(), myBitmap.getHeight())
             return myBitmap
+        }
+
+
+        private fun getBitmapFromAsset(context:Context, strName: String): Bitmap {
+
+            val assetManager = context.assets
+            var istr: InputStream? = null
+            try {
+                istr = assetManager.open(strName)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+
+            val bitmap = BitmapFactory.decodeStream(istr)
+            return bitmap
         }
 
 

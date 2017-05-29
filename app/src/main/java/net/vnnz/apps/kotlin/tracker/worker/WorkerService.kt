@@ -8,7 +8,7 @@ import net.vnnz.apps.kotlin.tracker.TrackerTasks
 import net.vnnz.apps.kotlin.tracker.pojo.ListItem
 
 
-class WorkerService : IntentService("WaterReminderIntentService") {
+class WorkerService : IntentService("WorkerService") {
 
     override fun onHandleIntent(intent: Intent?) {
         val action = intent?.action
