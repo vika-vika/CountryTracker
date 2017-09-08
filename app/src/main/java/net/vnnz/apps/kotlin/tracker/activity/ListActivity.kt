@@ -61,15 +61,6 @@ class ListActivity : AppCompatActivity(), ListItemsView {
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-
-        if (dialog != null) {
-            dialog?.dismiss()
-            dialog = null
-        }
-    }
-
     override fun onStart() {
         super.onStart()
     }

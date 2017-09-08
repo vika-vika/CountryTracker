@@ -3,9 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+ext.COMPILE_SDK_VERSION = 26
+ext.BUILD_TOOLS_VERSION = "26.0.1"
+
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion COMPILE_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
     defaultConfig {
         applicationId "net.vnnz.apps.kotlin.tracker"
         minSdkVersion 15
@@ -28,26 +31,32 @@ android {
         useNewCruncher false
         cruncherEnabled = false
     }
+
 }
 
 dependencies {
 
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.2'
 
-    compile 'com.android.support:appcompat-v7:25.0.0'
-    compile 'com.android.support:design:25.0.0'
+    compile "com.android.support:appcompat-v7:$COMPILE_SDK_VERSION+"
+    compile "com.android.support:design:$COMPILE_SDK_VERSION+"
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
 
     compile 'co.metalab.asyncawait:asyncawait:1.0.0'
 
     testCompile 'junit:junit:4.12'
-    kapt 'com.android.databinding:compiler:2.3.1'
+    kapt "com.android.databinding:compiler:2.3.3"
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    compile "android.arch.persistence.room:runtime:1.0.0-alpha9"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha9"
+    kapt "android.arch.persistence.room:compiler:1.0.0-alpha9"
 
 
 }

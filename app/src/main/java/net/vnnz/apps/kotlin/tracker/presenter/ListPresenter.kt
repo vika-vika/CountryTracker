@@ -16,6 +16,7 @@ import net.vnnz.apps.kotlin.tracker.view.ListItemsView
 import net.vnnz.apps.kotlin.tracker.worker.DataLoader
 import android.util.Log
 import co.metalab.asyncawait.async
+import net.vnnz.apps.kotlin.tracker.dao.CountriesDatabase
 import net.vnnz.apps.kotlin.tracker.utils.ImageUtils
 
 import java.util.ArrayList
@@ -65,6 +66,12 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
             await {
                 val bitmap = ImageUtils.fillImageMap(context, selectedItems?.toTypedArray())
                 ImageUtils.saveImage(bitmap, "europe")
+                val db : CountriesDatabase = CountriesDatabase.getAppDatabase(context);
+
+                db.countryDao().insertAll(selectedItems[0].getCountryItem());
+
+                Log.e("!!!!", "!!! " + db.countryDao().all.size )
+                Log.e("!!!!", "!!! " + db.countryDao().all.get(0).toString() )
             }
 
             view.hideLoadingUI();

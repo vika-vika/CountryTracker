@@ -52,5 +52,9 @@ data class ListItem(val item: Item) : Parcelable  {
         return "ListItem(name=$name, key=$key, color=$color, isSelected=$isSelected, isVisited=$isVisited)"
     }
 
+    fun getCountryItem(): Item {
+        return Item(key, name);
+    }
+
 
 }

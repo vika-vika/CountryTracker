@@ -12,5 +12,4 @@ class JSONResult {
         return "JSONResult(items=${Arrays.toString(items)})"
     }
 
-
 }
