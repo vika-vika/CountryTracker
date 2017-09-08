@@ -3,32 +3,32 @@
     {
       "name": "Andorra",
       "key": "andorra",
-      "color": "#C72E2C"
+      "color": "#e71313"
     },
     {
       "name": "Belgium",
       "key": "Belgium",
-      "color": "#3A7EC7"
+      "color": "#1322e7"
     },
     {
       "name": "Germany",
       "key": "Germany",
-      "color": "#53C736"
+      "color": "#139f2a"
     },
     {
       "name": "Litva",
       "key": "Litva",
-      "color": "#F0E76E"
+      "color": "#6d139e"
     },
     {
       "name": "Norway",
       "key": "Norway",
-      "color": "#3932C7"
+      "color": "#cb8119"
     },
     {
       "name": "Denmark",
       "key": "Denmark",
-      "color": "#C53EC7"
+      "color": "#1c9680"
     }
   ]
 }
