@@ -31,6 +31,12 @@ android {
         useNewCruncher false
         cruncherEnabled = false
     }
+    lintOptions {
+        disable 'RestrictedApi'
+    }
+
+
+
 
 }
 
