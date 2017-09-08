@@ -71,12 +71,10 @@ class ListActivity : AppCompatActivity(), ListItemsView {
     }
 
     override fun onStart() {
-        presenter.registerReceiver(this);
         super.onStart()
     }
 
     override fun onDestroy() {
-        presenter.unregisterReceiver(this);
         super.onDestroy()
     }
 }
