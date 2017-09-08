@@ -6,11 +6,9 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Environment
 import android.util.Log
-import net.vnnz.apps.kotlin.tracker.R
 import net.vnnz.apps.kotlin.tracker.pojo.ListItem
 import java.io.File
 import java.io.FileOutputStream
-import android.content.res.AssetManager
 import java.io.IOException
 import java.io.InputStream
 
@@ -23,7 +21,7 @@ class ImageUtils {
 
         }
 
-        fun getVisitedColors(items: Array<ListItem>)  = items./*filter {it.isSelected}.*/map {Color.parseColor(it.color)}
+        fun getVisitedColors(items: Array<ListItem>)  = items.map {Color.parseColor(it.color)}
 
         fun fillImageMap(context: Context, items: Array<ListItem>?) : Bitmap {
 
@@ -43,10 +41,9 @@ class ImageUtils {
 
             val visitedColors : List<Int>  = getVisitedColors(items!!)
 
-            for (i in 0..allpixels.size - 1) {
+            for (i in 0 until allpixels.size) {
 
                 if (allpixels[i] in visitedColors) {
-                    //  Log.e("TAG", "changing")
                     allpixels[i] = Color.RED
                 }
             }
@@ -56,7 +53,7 @@ class ImageUtils {
         }
 
 
-        private fun getBitmapFromAsset(context:Context, strName: String): Bitmap {
+        public fun getBitmapFromAsset(context:Context, strName: String): Bitmap {
 
             val assetManager = context.assets
             var istr: InputStream? = null
@@ -66,18 +63,18 @@ class ImageUtils {
                 e.printStackTrace()
             }
 
-            val bitmap = BitmapFactory.decodeStream(istr)
-            return bitmap
+            return BitmapFactory.decodeStream(istr)
         }
 
 
         fun saveImage(bitmap : Bitmap, mapName: String) {
+
             val root: String = Environment.getExternalStorageDirectory().absolutePath
-            val myDir: File = File(root + "/maps")
+            val myDir = File(root + "/maps")
             myDir.mkdirs()
 
-            val filename:String = "map_$mapName.png"
-            var file:File = File (myDir, filename)
+            val filename = "map_$mapName.png"
+            var file = File (myDir, filename)
             if (file.exists()) file.delete()
 
             try {
