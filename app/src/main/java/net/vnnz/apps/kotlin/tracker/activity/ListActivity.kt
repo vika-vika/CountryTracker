@@ -1,9 +1,12 @@
 package net.vnnz.apps.kotlin.tracker.activity
 
+import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.LoaderManager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 
 import net.vnnz.apps.kotlin.tracker.view.ListItemsView
@@ -14,7 +17,7 @@ import net.vnnz.apps.kotlin.tracker.adapter.ItemSelectAdapter
 
 class ListActivity : AppCompatActivity(), ListItemsView {
 
-    val presenter = ListPresenter()
+    private val presenter = ListPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +40,43 @@ class ListActivity : AppCompatActivity(), ListItemsView {
     }
 
     fun onDoneClick(view: View) {
-        presenter.saveSelectedImageMap();
+        presenter.saveSelectedImageMap(this);
     }
 
     override fun finishActivity() {
+        setResult(Activity.RESULT_OK);
         finish();
     }
 
+    private var dialog: ProgressDialog? = null
+
+    override fun showLoadingUI(s: String) {
+        dialog = ProgressDialog.show(this, "Please wait", s);
+    }
+
+    override fun hideLoadingUI() {
+        if ((dialog != null) && (dialog?.isShowing!!)) {
+            dialog?.dismiss();
+            dialog = null;
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        if (dialog != null) {
+            dialog?.dismiss()
+            dialog = null
+        }
+    }
+
+    override fun onStart() {
+        presenter.registerReceiver(this);
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        presenter.unregisterReceiver(this);
+        super.onDestroy()
+    }
 }

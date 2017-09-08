@@ -9,4 +9,6 @@ interface ListItemsView {
     fun getViewContext() : Context?
     fun updateHeader(size: Int)
     fun finishActivity()
+    fun showLoadingUI(s: String)
+    fun hideLoadingUI()
 }

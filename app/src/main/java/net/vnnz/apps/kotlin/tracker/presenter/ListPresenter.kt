@@ -1,5 +1,8 @@
 package net.vnnz.apps.kotlin.tracker
 
+import android.app.Activity
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.databinding.BindingAdapter
 import android.databinding.ObservableArrayList
 import android.graphics.Color
@@ -14,6 +17,9 @@ import android.support.v4.content.Loader
 import net.vnnz.apps.kotlin.tracker.view.ListItemsView
 import net.vnnz.apps.kotlin.tracker.worker.DataLoader
 import android.content.Intent
+import android.content.IntentFilter
+import android.support.v4.content.LocalBroadcastManager
+import android.util.Log
 
 import net.vnnz.apps.kotlin.tracker.worker.WorkerService
 import java.util.ArrayList
@@ -55,13 +61,33 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
         view.getLoader().initLoader(0, null, this)
     }
 
-    fun saveSelectedImageMap() {
+    private lateinit var receiver: BroadcastReceiver
+
+    fun registerReceiver (activity: Activity){
+        receiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                view.hideLoadingUI();
+                view.finishActivity();
+            }
+        }
+
+        var intentFilter  = IntentFilter();
+        intentFilter.addAction(TrackerTasks.WORK_COMPLETE_ACTION);
+        LocalBroadcastManager.getInstance(activity).registerReceiver(receiver, intentFilter);
+    }
+
+    fun unregisterReceiver(activity: Activity) {
+        LocalBroadcastManager.getInstance(activity)
+                .registerReceiver(receiver, IntentFilter(TrackerTasks.WORK_COMPLETE_ACTION))
+    }
+
+    fun saveSelectedImageMap(context: Context) {
         val workerService = Intent(view.getViewContext()!!, WorkerService::class.java)
         workerService.action = TrackerTasks.ACTION_COLOR_ANS_SAVE_MAP
         workerService.putParcelableArrayListExtra(TrackerTasks.EXTRA_COLOR_ANS_SAVE_MAP, selectedItems)
 
-        view.getViewContext()?.startService(workerService)
-        view.finishActivity();
+        context.startService(workerService)
+        view.showLoadingUI("Preparing map");/*finishActivity();*/
     }
 }
 
