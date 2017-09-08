@@ -36,7 +36,7 @@ android {
 
 dependencies {
 
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.2'
+    //debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.2'
 
     compile "com.android.support:appcompat-v7:$COMPILE_SDK_VERSION+"
     compile "com.android.support:design:$COMPILE_SDK_VERSION+"
