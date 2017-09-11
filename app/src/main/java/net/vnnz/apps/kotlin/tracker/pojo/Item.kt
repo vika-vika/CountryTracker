@@ -24,6 +24,13 @@ class Item() {
     var color: String? = null
 
     @Ignore
+    var isSelected: Boolean = false
+
+    @Ignore
+    var isVisited: Boolean = false
+
+
+    @Ignore
     constructor(key: String?, name: String?) : this() {
 
         this.key = key
@@ -31,9 +38,39 @@ class Item() {
     }
 
     override fun toString(): String {
-        return "Item_{" +
-                "key='" + key + '\'' +
-                ", name='" + name + '\'' +
-                '}'
+        return "ListItem(name=$name, key=$key, color=$color, isSelected=$isSelected, isVisited=$isVisited)"
     }
 }
+
+
+
+/*  companion object {
+      @JvmField val CREATOR: Parcelable.Creator<ListItem> = object : Parcelable.Creator<ListItem> {
+          override fun createFromParcel(source: Parcel): ListItem = createItem(source)
+          override fun newArray(size: Int): Array<ListItem?> = arrayOfNulls(size)
+      }
+
+      fun createItem(source: Parcel): ListItem {
+          val item = Item()
+          item.name = source.readString()
+          item.key = source.readString()
+          item.color = source.readString()
+          val listItem = ListItem(item)
+          listItem.isSelected = (source.readByte().toInt() == 1)
+          listItem.isVisited = (source.readByte() == (1.toByte()))
+
+          return listItem
+      }
+
+  }
+
+  override fun writeToParcel(dest: Parcel?, flags: Int) {
+      dest?.writeString(name)
+      dest?.writeString(key)
+      dest?.writeString(color)
+      dest?.writeByte(if (isSelected) 1 else 0)
+      dest?.writeByte(if (isVisited) 1 else 0)
+  }
+
+
+  override fun describeContents() = 0*/

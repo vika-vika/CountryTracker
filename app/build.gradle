@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId "net.vnnz.apps.kotlin.tracker"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion COMPILE_SDK_VERSION
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -34,10 +34,6 @@ android {
     lintOptions {
         disable 'RestrictedApi'
     }
-
-
-
-
 }
 
 dependencies {
@@ -46,7 +42,7 @@ dependencies {
 
     compile "com.android.support:appcompat-v7:$COMPILE_SDK_VERSION+"
     compile "com.android.support:design:$COMPILE_SDK_VERSION+"
-    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.google.code.gson:gson:2.7'
     compile 'com.squareup.picasso:picasso:2.5.2'
 
     compile 'co.metalab.asyncawait:asyncawait:1.0.0'

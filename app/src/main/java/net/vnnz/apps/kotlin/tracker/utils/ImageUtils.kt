@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Environment
 import android.util.Log
-import net.vnnz.apps.kotlin.tracker.pojo.ListItem
+import net.vnnz.apps.kotlin.tracker.pojo.Item
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -21,9 +21,9 @@ class ImageUtils {
 
         }
 
-        fun getVisitedColors(items: Array<ListItem>)  = items.map {Color.parseColor(it.color)}
+        fun getVisitedColors(items: Array<Item>)  = items.map {Color.parseColor(it.color)}
 
-        fun fillImageMap(context: Context, items: Array<ListItem>?) : Bitmap {
+        fun fillImageMap(context: Context, items: Array<Item>?) : Bitmap {
 
             val options = BitmapFactory.Options()
             options.inMutable = true

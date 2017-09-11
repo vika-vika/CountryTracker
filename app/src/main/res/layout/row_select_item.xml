@@ -7,7 +7,7 @@
         <import type="net.vnnz.apps.kotlin.tracker.ListPresenter"/>
         <variable
             name="item"
-            type="net.vnnz.apps.kotlin.tracker.pojo.ListItem" />
+            type="net.vnnz.apps.kotlin.tracker.pojo.Item" />
 
         <variable name="viewmodel" type="ListPresenter" />
     </data>
@@ -36,7 +36,6 @@
                 android:id="@+id/checkboxSelected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_marginRight="15dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"

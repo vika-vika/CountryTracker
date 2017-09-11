@@ -6,7 +6,6 @@ import android.databinding.ObservableArrayList
 import android.graphics.Color
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import net.vnnz.apps.kotlin.tracker.pojo.ListItem
 import net.vnnz.apps.kotlin.tracker.utils.ResourceUtils
 import android.os.Bundle
 import android.support.v4.app.LoaderManager
@@ -17,19 +16,20 @@ import net.vnnz.apps.kotlin.tracker.worker.DataLoader
 import android.util.Log
 import co.metalab.asyncawait.async
 import net.vnnz.apps.kotlin.tracker.dao.CountriesDatabase
+import net.vnnz.apps.kotlin.tracker.pojo.Item
 import net.vnnz.apps.kotlin.tracker.utils.ImageUtils
 
 import java.util.ArrayList
 
 
-class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
+class ListPresenter() : LoaderManager.LoaderCallbacks<List<Item>> {
 
     lateinit var view: ListItemsView;
 
-    var selectedItems: ArrayList<ListItem> = ArrayList<ListItem>()
-    var items: ObservableArrayList<ListItem> = ObservableArrayList<ListItem>()
+    var selectedItems: ArrayList<Item> = ArrayList<Item>()
+    var items: ObservableArrayList<Item> = ObservableArrayList<Item>()
 
-    fun onCheckboxClick(item: ListItem) {
+    fun onCheckboxClick(item: Item) {
 
         if (selectedItems.contains(item))
             selectedItems.remove(item)
@@ -38,18 +38,18 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
         view.updateHeader(selectedItems.size)
     }
 
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<List<ListItem>> {
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<List<Item>> {
         return DataLoader(view.getViewContext()!!, R.raw.test_map)
     }
 
-    override fun onLoadFinished(loader: Loader<List<ListItem>>?, data: List<ListItem>?) {
+    override fun onLoadFinished(loader: Loader<List<Item>>?, data: List<Item>?) {
         for (item in data!!) {
             items.add(item)
         }
         view.onItemsLoaded()
     }
 
-    override fun onLoaderReset(loader: Loader<List<ListItem>>?) {
+    override fun onLoaderReset(loader: Loader<List<Item>>?) {
 
     }
 
@@ -68,7 +68,12 @@ class ListPresenter() : LoaderManager.LoaderCallbacks<List<ListItem>> {
                 ImageUtils.saveImage(bitmap, "europe")
                 val db : CountriesDatabase = CountriesDatabase.getAppDatabase(context);
 
-                db.countryDao().insertAll(selectedItems[0].getCountryItem());
+                val foo = ArrayList<Item>();
+                selectedItems.forEach {
+                    i-> foo.add(Item(i.key, i.name))
+                }
+
+                db.countryDao().insertAll(*foo.toTypedArray());
 
                 Log.e("!!!!", "!!! " + db.countryDao().all.size )
                 Log.e("!!!!", "!!! " + db.countryDao().all.get(0).toString() )

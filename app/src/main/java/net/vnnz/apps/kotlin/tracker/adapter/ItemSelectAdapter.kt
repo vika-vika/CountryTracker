@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import net.vnnz.apps.kotlin.tracker.R
-import net.vnnz.apps.kotlin.tracker.pojo.ListItem
 
 import net.vnnz.apps.kotlin.tracker.ListPresenter
 import net.vnnz.apps.kotlin.tracker.databinding.RowSelectItemBinding
+import net.vnnz.apps.kotlin.tracker.pojo.Item
 
 
 class ItemSelectAdapter(var viewmodel : ListPresenter) : BaseAdapter() {
-    var items : List<ListItem> = viewmodel.items
+    var items : List<Item> = viewmodel.items
 
     override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
 
