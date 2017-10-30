@@ -1,3 +1,3 @@
 # CountryTracker
-Simple version of Visited app to track countries (Kotlin + MVVM + CircleCI config)
+Simple version of Visited app to track countries (Kotlin + MVP + CircleCI config)
 
